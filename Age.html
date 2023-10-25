@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Verification</title>
+</head>
+<body>
+    <h2 id="userNameDisplay"></h2>
+    <label for="ageInput">Enter your age:</label>
+    <input type="text" id="ageInput">
+    <button onclick="redirectToPage()">Submit</button>
+
+    <script>
+    window.onload = function() {
+        const name = sessionStorage.getItem("userName");
+        if (name) {
+            document.getElementById("userNameDisplay").innerText = "Hello, " + name + ". Please enter your age:";
+        }
+    };
+
+    function redirectToPage() {
+        const age = parseInt(document.getElementById("ageInput").value, 10);
+        if (!isNaN(age)) {
+            if (age < 18) {
+                window.location.href = "teddybear.html";
+            } else {
+                window.location.href = "practice.html";
+            }
+        } else {
+            alert("Please enter a valid age.");
+        }
+    }
+    </script>
+</body>
+</html>
